@@ -11,6 +11,7 @@ class _ResetState extends State<Reset> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //this is app bar
       appBar: AppBar(
         backgroundColor: Colors.indigo[900],
         elevation: 0.0,
