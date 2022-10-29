@@ -14,7 +14,7 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Center(
                 child: Expanded(
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Icon(
                         _obscureText ? Icons.visibility : Icons.visibility_off,
-                        color: Color(0xFF1A237E),
+                        color: Color(0xFF349873),
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                     padding: EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
-                      color: Colors.indigo[900],
+                      color: Color(0xFF349873),
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: Center(
