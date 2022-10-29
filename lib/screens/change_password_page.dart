@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ResetPassword extends StatefulWidget {
-  const ResetPassword({Key? key}) : super(key: key);
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({Key? key}) : super(key: key);
 
   @override
-  State<ResetPassword> createState() => _ResetPasswordState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _ResetPasswordState extends State<ResetPassword> {
+class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,7 +46,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                       children: [
                         Image.asset('images/R.png', width: 27.0),
                         Text(
-                          ' Reset Password',
+                          ' Change Password',
                           style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
@@ -65,13 +65,21 @@ class _ResetPasswordState extends State<ResetPassword> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 15.0),
-                      padding: EdgeInsets.only(left: 20.0),
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Reason',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 17.0),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
+                      margin: EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 15.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Current Password',
+                          hintStyle: TextStyle(fontWeight: FontWeight.w500),
+                          enabledBorder: InputBorder.none,
+                        ),
                       ),
                     ),
                     Container(
@@ -86,7 +94,25 @@ class _ResetPasswordState extends State<ResetPassword> {
                       ),
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: 'Password Change Reason',
+                          hintText: 'New Password',
+                          hintStyle: TextStyle(fontWeight: FontWeight.w500),
+                          enabledBorder: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
+                      margin: EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 15.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Confirm Password',
                           hintStyle: TextStyle(fontWeight: FontWeight.w500),
                           enabledBorder: InputBorder.none,
                         ),

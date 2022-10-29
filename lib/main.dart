@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'screens/login_page.dart';
 import 'screens/dashboard_page.dart';
+import 'screens/profile_page.dart';
+import 'screens/reset_page.dart';
+import 'screens/request_page.dart';
+import 'screens/change_password_page.dart';
 
 void main() {
   return runApp(const MyApp());
@@ -21,10 +25,10 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/login': (context) => LoginPage(),
         '/Dashboard': (context) => Dashboard(),
-        // '/request': (context) => Request_Reason(),
-        // '/reset': (context) => ResetPassword(),
-        // '/profile': (context) => Profile_page(),
-        // '/changepassword': (context) => ChangePassword(),
+        '/request': (context) => Request_Reason(),
+        '/reset': (context) => ResetPassword(),
+        '/profile': (context) => Profile_page(),
+        '/changepassword': (context) => ChangePassword(),
       },
     );
   }
