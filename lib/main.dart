@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/constants.dart';
 import 'package:untitled2/screens/request_view_page.dart';
 import 'package:untitled2/screens/take_attendance_page.dart';
 import 'screens/login_page.dart';
@@ -23,6 +24,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.green),
       initialRoute: '/login',
       routes: {
         '/login': (context) => LoginPage(),
@@ -32,7 +34,6 @@ class _MyAppState extends State<MyApp> {
         '/profile': (context) => Profile_page(),
         '/changepassword': (context) => ChangePassword(),
         '/takeAttendance': (context) => TakeAttendance(),
-        '/requestView': (context) => RequestView(),
       },
     );
   }
