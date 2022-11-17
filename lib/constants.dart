@@ -35,6 +35,14 @@ const topTitle =
 
 const cardTitle =
     TextStyle(color: Colors.grey, fontSize: 15.0, fontWeight: FontWeight.bold);
+
+const icons = SizedBox();
+
+double DanPadding = 20.0;
+double AppbarHeight = 0.0;
+bool obscureText3 = true;
+bool obscureText1 = true;
+bool obscureText2 = true;
 //
 // const kProfileNameStyle = TextStyle(
 //   color: Colors.indigo,
