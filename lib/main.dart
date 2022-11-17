@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/screens/request_view_page.dart';
+import 'package:untitled2/screens/take_attendance_page.dart';
 import 'screens/login_page.dart';
 import 'screens/dashboard_page.dart';
 import 'screens/profile_page.dart';
@@ -29,6 +31,8 @@ class _MyAppState extends State<MyApp> {
         '/reset': (context) => ResetPassword(),
         '/profile': (context) => Profile_page(),
         '/changepassword': (context) => ChangePassword(),
+        '/takeAttendance': (context) => TakeAttendance(),
+        '/requestView': (context) => RequestView(),
       },
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../components/reusable_widgets.dart';
+import '../constants.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({Key? key}) : super(key: key);
@@ -10,142 +12,112 @@ class ChangePassword extends StatefulWidget {
 class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      AppbarHeight = MediaQuery.of(context).size.height * 0.2;
+    });
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      DanPadding = 20.0;
+    } else {
+      DanPadding = MediaQuery.of(context).size.width * 0.35;
+    }
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFF349873),
-          elevation: 0.0,
-          actions: [
-            Image.asset('images/edited-logo.png'),
-          ],
-        ),
-        body: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              color: Color(0xFF349873),
-              child: Container(
-                width: double.infinity,
-                margin: EdgeInsets.only(left: 15.0),
-                padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(right: 130.0),
-                      child: Text(
-                        'Dan Energy Ethiopia',
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+        appBar: EditedAppBar(
+            Title: 'Change Password',
+            BarIcon: Icons.lock_clock,
+            AppbarHeight: AppbarHeight,
+            TitlePadding: DanPadding),
+        body: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20.0,
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
+                  child: DecoratedTextField(
+                    hint: 'Current Password',
+                    secure: obscureText3,
+                    icon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          obscureText3 = !obscureText3;
+                        });
+                      },
+                      child: Icon(
+                        !obscureText3 ? Icons.visibility : Icons.visibility_off,
+                        color: Color(0xFF349873),
                       ),
                     ),
-                    SizedBox(height: 5.0),
-                    Row(
-                      children: [
-                        Image.asset('images/R.png', width: 27.0),
-                        Text(
-                          ' Change Password',
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
+                  child: DecoratedTextField(
+                    hint: 'New Password',
+                    secure: obscureText1,
+                    icon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          obscureText1 = !obscureText1;
+                        });
+                      },
+                      child: Icon(
+                        !obscureText1 ? Icons.visibility : Icons.visibility_off,
+                        color: Color(0xFF349873),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
+                  child: DecoratedTextField(
+                    hint: 'Confirm Password',
+                    secure: obscureText2,
+                    icon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          obscureText2 = !obscureText2;
+                        });
+                      },
+                      child: Icon(
+                        !obscureText2 ? Icons.visibility : Icons.visibility_off,
+                        color: Color(0xFF349873),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 130.0),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Color(0xFF349873),
+                      borderRadius: BorderRadius.circular(20.0)),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          setState(() {});
+                        },
+                        child: Text(
+                          'REQUEST',
                           style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold),
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-            Expanded(
-              flex: 3,
-              child: Container(
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 15.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Current Password',
-                          hintStyle: TextStyle(fontWeight: FontWeight.w500),
-                          enabledBorder: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 15.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'New Password',
-                          hintStyle: TextStyle(fontWeight: FontWeight.w500),
-                          enabledBorder: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 15.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Confirm Password',
-                          hintStyle: TextStyle(fontWeight: FontWeight.w500),
-                          enabledBorder: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 130.0),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Color(0xFF349873),
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: Column(
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              setState(() {});
-                            },
-                            child: Text(
-                              'REQUEST',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

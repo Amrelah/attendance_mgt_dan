@@ -1,3 +1,4 @@
+import '../components/reusable_widgets.dart';
 import '/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,23 +44,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(20.0),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: kEnabledBorderColor,
-                      ),
-                      borderRadius: BorderRadius.circular(30), //<-- SEE HERE
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: kFocusedBorderSideColor,
-                      ),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: 'Username',
-                  ),
+                child: DecoratedTextField(
+                  hint: 'Username',
+                  Ktype: TextInputType.name,
+                  secure: false,
                 ),
               ),
               SizedBox(
@@ -66,36 +55,51 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(20.0),
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _obscureText = !_obscureText;
-                        });
-                      },
-                      child: Icon(
-                        _obscureText ? Icons.visibility : Icons.visibility_off,
-                        color: Color(0xFF349873),
-                      ),
+                child: DecoratedTextField(
+                  hint: 'Password',
+                  secure: _obscureText,
+                  icon: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                    child: Icon(
+                      !_obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: Color(0xFF349873),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: kEnabledBorderColor,
-                      ),
-                      borderRadius: BorderRadius.circular(30), //<-- SEE HERE
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: kFocusedBorderSideColor,
-                      ),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: 'Password',
                   ),
-                  obscureText: _obscureText,
                 ),
+                // TextField(
+                //   decoration: InputDecoration(
+                //     contentPadding: EdgeInsets.all(20.0),
+                //     suffixIcon: GestureDetector(
+                //       onTap: () {
+                //         setState(() {
+                //           _obscureText = !_obscureText;
+                //         });
+                //       },
+                //       child: Icon(
+                //         _obscureText ? Icons.visibility : Icons.visibility_off,
+                //         color: Color(0xFF349873),
+                //       ),
+                //     ),
+                //     enabledBorder: OutlineInputBorder(
+                //       borderSide: BorderSide(
+                //         color: kEnabledBorderColor,
+                //       ),
+                //       borderRadius: BorderRadius.circular(30), //<-- SEE HERE
+                //     ),
+                //     focusedBorder: OutlineInputBorder(
+                //       borderSide: BorderSide(
+                //         color: kFocusedBorderSideColor,
+                //       ),
+                //       borderRadius: BorderRadius.circular(30),
+                //     ),
+                //     hintText: 'Password',
+                //   ),
+                //   obscureText: _obscureText,
+                // ),
               ),
               SizedBox(
                 height: 15.0,
