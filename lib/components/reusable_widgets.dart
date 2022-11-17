@@ -43,12 +43,14 @@ class EditedAppBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData BarIcon;
   final String Title;
   final double AppbarHeight;
+  final bool menu;
 
   EditedAppBar(
       {required this.TitlePadding,
       required this.BarIcon,
       required this.Title,
-      required this.AppbarHeight});
+      required this.AppbarHeight,
+      this.menu = false});
 
   @override
   Widget build(BuildContext context) {
@@ -62,21 +64,32 @@ class EditedAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           SizedBox(width: 20.0),
         ],
-        leading: Padding(
-          padding:
-              const EdgeInsets.only(top: 0.0, bottom: kToolbarHeight * 1.3),
-          child: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              );
-            },
-          ),
-        ),
+        leading: menu
+            ? Padding(
+                padding: const EdgeInsets.only(
+                    top: 0.0, bottom: kToolbarHeight * 1.3),
+                child: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: const Icon(Icons.menu),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      tooltip: MaterialLocalizations.of(context)
+                          .openAppDrawerTooltip,
+                    );
+                  },
+                ),
+              )
+            : Padding(
+                padding: const EdgeInsets.only(
+                    top: 0.0, bottom: kToolbarHeight * 1.3),
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back)),
+              ),
         backgroundColor: Color(0xFF349873),
         toolbarHeight: MediaQuery.of(context).size.height * 0.2,
         flexibleSpace: Column(
@@ -115,4 +128,43 @@ class EditedAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   // TODO: implement preferredSize
   Size get preferredSize => new Size.fromHeight(AppbarHeight);
+}
+
+class DashboardContainer extends StatelessWidget {
+  final String Title;
+  final Widget child;
+  final double left;
+  final double right;
+  final Color color;
+  DashboardContainer(
+      {required this.Title,
+      required this.child,
+      this.left = 50.0,
+      this.right = 5.0,
+      this.color = Colors.transparent});
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.all(5.0),
+        margin: EdgeInsets.only(
+          left: left,
+          right: right,
+          top: 10.0,
+          bottom: 7.0,
+        ),
+        decoration: BoxDecoration(
+          color: color,
+          border: Border.all(color: Colors.black, width: 0.5),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Column(
+          children: [
+            Text(Title, style: cardTitle),
+            child,
+          ],
+        ),
+      ),
+    );
+  }
 }

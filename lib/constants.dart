@@ -6,6 +6,8 @@ const kProfileNameStyle = TextStyle(
   fontSize: 12.0,
 );
 
+const kDefaultColor = Color(0xFF349873);
+
 const kHeadingTitleStyle = TextStyle(
   color: Color(0xFF349873), // indigo[900]
   fontWeight: FontWeight.bold,

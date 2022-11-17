@@ -18,54 +18,54 @@ class _TakeAttendanceState extends State<TakeAttendance> {
           BarIcon: Icons.perm_contact_cal,
           Title: 'Attendance',
           AppbarHeight: AppbarHeight),
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 15.0),
-                padding: EdgeInsets.only(left: 20.0),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Reason',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
-                child: DecoratedTextField(
-                    hint: 'Password Reset Reason',
-                    Ktype: TextInputType.text,
-                    secure: false),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 130.0),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: Color(0xFF349873),
-                    borderRadius: BorderRadius.circular(20.0)),
-                child: Column(
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        setState(() {});
-                      },
-                      child: Text(
-                        'REQUEST',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: kDefaultColor,
+        child: Icon(Icons.calendar_month_rounded),
+        onPressed: () {
+          showDatePicker(
+              currentDate: DateTime.now(),
+              context: context,
+              initialDate: DateTime(2022),
+              firstDate: DateTime(2022),
+              lastDate: DateTime(2022));
+        },
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text('Employe 1'),
+            trailing: Checkbox(
+              onChanged: (val) {
+                setState(() {
+                  val = !val!;
+                });
+              },
+              value: false,
+            ),
           ),
-        ),
+          ListTile(
+            title: Text('Employe 1'),
+            trailing: Checkbox(
+              onChanged: (val) {
+                setState(() {
+                  val = !val!;
+                });
+              },
+              value: false,
+            ),
+          ),
+          ListTile(
+            title: Text('Employe 1'),
+            trailing: Checkbox(
+              onChanged: (val) {
+                setState(() {
+                  val = !val!;
+                });
+              },
+              value: false,
+            ),
+          ),
+        ],
       ),
     );
   }
