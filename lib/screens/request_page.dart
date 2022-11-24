@@ -1,5 +1,6 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:untitled2/components/notificationView.dart';
 import '../components/reusable_widgets.dart';
 import '../constants.dart';
 
@@ -11,16 +12,10 @@ class Request_Reason extends StatefulWidget {
 }
 
 class _Request_ReasonState extends State<Request_Reason> {
+  String val = '';
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      AppbarHeight = MediaQuery.of(context).size.height * 0.2;
-    });
-    if (MediaQuery.of(context).orientation == Orientation.portrait) {
-      DanPadding = 20.0;
-    } else {
-      DanPadding = MediaQuery.of(context).size.width * 0.35;
-    }
+   Landscape(context);
     return Scaffold(
       //drawer: Drawer(),
       appBar: EditedAppBar(
@@ -49,9 +44,16 @@ class _Request_ReasonState extends State<Request_Reason> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 25.0, vertical: 5.0),
                     child: DecoratedTextField(
-                        hint: 'Request Reason',
-                        Ktype: TextInputType.text,
-                        secure: false),
+                      hint: 'Request Reason',
+                      Ktype: TextInputType.text,
+                      secure: false,
+                      whenChange: (String vals) {
+                        print(vals);
+                        setState(() {
+                          val = vals;
+                        });
+                      },
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 15.0),
@@ -95,7 +97,16 @@ class _Request_ReasonState extends State<Request_Reason> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            setState(() {});
+                            if (val == '') {
+                              print('its empty $val');
+                            } else {
+                              print('value = $val');
+                              request.add(val);
+                              //   await NotificationView.showNotification(
+                              //       title: 'Request',
+                              //       body: 'Your request has been accepted',
+                              //       payload: 'Dan Energy');
+                            }
                           },
                           child: Text(
                             'Send',

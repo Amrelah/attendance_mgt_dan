@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 
+List<String> request = [];
+
+Landscape(BuildContext context) {
+  AppbarHeight = MediaQuery.of(context).size.height * 0.2;
+
+  if (MediaQuery.of(context).orientation == Orientation.portrait) {
+    DanPadding = 20.0;
+  } else {
+    DanPadding = MediaQuery.of(context).size.width * 0.35;
+  }
+}
+
 const kProfileNameStyle = TextStyle(
   color: Colors.indigo,
   fontWeight: FontWeight.bold,

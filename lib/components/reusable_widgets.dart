@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../screens/request_view_page.dart';
 
 class DecoratedTextField extends StatelessWidget {
   final String hint;
   final Widget icon;
   final bool secure;
   final TextInputType Ktype;
+  final Function whenChange;
   DecoratedTextField(
       {required this.hint,
       this.icon = icons,
       this.secure = true,
-      this.Ktype = TextInputType.visiblePassword});
+      this.Ktype = TextInputType.visiblePassword,
+      required this.whenChange});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: (val) {
+        whenChange(val);
+      },
       obscureText: secure,
       keyboardType: Ktype,
       decoration: InputDecoration(
@@ -38,6 +44,40 @@ class DecoratedTextField extends StatelessWidget {
   }
 }
 
+class EmployeList extends StatefulWidget {
+  @override
+  State<EmployeList> createState() => _EmployeListState();
+}
+
+class _EmployeListState extends State<EmployeList> {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.black),
+            borderRadius: BorderRadius.circular(50.0)),
+        child: CircleAvatar(
+          child: Icon(
+            Icons.person,
+            color: Colors.black45,
+          ),
+          backgroundColor: Colors.transparent,
+        ),
+      ),
+      title: Text('Employe Name'),
+      trailing: Checkbox(
+        onChanged: (val) {
+          setState(() {
+            val = !val!;
+          });
+        },
+        value: false,
+      ),
+    );
+  }
+}
+
 class EditedAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double TitlePadding;
   final IconData BarIcon;
@@ -56,11 +96,14 @@ class EditedAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         actions: [
-          Image(
-            alignment: Alignment.topRight,
-            width: 70.0,
-            height: 70.0,
-            image: AssetImage('images/edited-logo.png'),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Image(
+              alignment: Alignment.topRight,
+              width: 70.0,
+              height: 70.0,
+              image: AssetImage('images/edited-logo.png'),
+            ),
           ),
           SizedBox(width: 20.0),
         ],
@@ -136,33 +179,41 @@ class DashboardContainer extends StatelessWidget {
   final double left;
   final double right;
   final Color color;
+  final Widget route;
   DashboardContainer(
       {required this.Title,
       required this.child,
       this.left = 50.0,
       this.right = 5.0,
-      this.color = Colors.transparent});
+      this.color = Colors.transparent,
+      required this.route});
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        padding: EdgeInsets.all(5.0),
-        margin: EdgeInsets.only(
-          left: left,
-          right: right,
-          top: 10.0,
-          bottom: 7.0,
-        ),
-        decoration: BoxDecoration(
-          color: color,
-          border: Border.all(color: Colors.black, width: 0.5),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Column(
-          children: [
-            Text(Title, style: cardTitle),
-            child,
-          ],
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => route));
+        },
+        child: Container(
+          padding: EdgeInsets.all(5.0),
+          margin: EdgeInsets.only(
+            left: left,
+            right: right,
+            top: 10.0,
+            bottom: 7.0,
+          ),
+          decoration: BoxDecoration(
+            color: color,
+            border: Border.all(color: Colors.black, width: 0.5),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Column(
+            children: [
+              Text(Title, style: cardTitle),
+              child,
+            ],
+          ),
         ),
       ),
     );
