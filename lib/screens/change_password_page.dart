@@ -12,14 +12,7 @@ class ChangePassword extends StatefulWidget {
 class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      AppbarHeight = MediaQuery.of(context).size.height * 0.2;
-    });
-    if (MediaQuery.of(context).orientation == Orientation.portrait) {
-      DanPadding = 20.0;
-    } else {
-      DanPadding = MediaQuery.of(context).size.width * 0.35;
-    }
+    Landscape(context);
     return SafeArea(
       child: Scaffold(
         appBar: EditedAppBar(
@@ -39,6 +32,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
                   child: DecoratedTextField(
+                    whenChange: () {},
                     hint: 'Current Password',
                     secure: obscureText3,
                     icon: GestureDetector(
@@ -58,6 +52,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
                   child: DecoratedTextField(
+                    whenChange: () {},
                     hint: 'New Password',
                     secure: obscureText1,
                     icon: GestureDetector(
@@ -77,6 +72,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
                   child: DecoratedTextField(
+                    whenChange: () {},
                     hint: 'Confirm Password',
                     secure: obscureText2,
                     icon: GestureDetector(

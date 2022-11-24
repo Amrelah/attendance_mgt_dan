@@ -7,28 +7,43 @@ class RequestView extends StatelessWidget {
   RequestView({required this.title});
   @override
   Widget build(BuildContext context) {
+   Landscape(context);
     return Scaffold(
       appBar: EditedAppBar(
           TitlePadding: DanPadding,
           BarIcon: Icons.list_alt,
-          Title: '$title Requests',
+          Title: title,
           AppbarHeight: AppbarHeight),
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text('Request 1'),
-          ),
-          ListTile(
-            title: Text('Request 1'),
-          ),
-          ListTile(
-            title: Text('Request 1'),
-          ),
-          ListTile(
-            title: Text('Request 1'),
-          ),
-        ],
-      ),
+      body: const RequestList(),
     );
+  }
+}
+
+class RequestList extends StatefulWidget {
+  const RequestList({Key? key}) : super(key: key);
+
+  @override
+  State<RequestList> createState() => _RequestListState();
+}
+
+class _RequestListState extends State<RequestList> {
+  @override
+  Widget build(BuildContext context) {
+    if (request.length == 0) {
+      return Center(
+        child: Image.asset(
+          'images/wastebasket-objects.gif',
+          width: 100,
+          height: 100,
+        ),
+      );
+    } else {
+      return ListView.builder(
+        itemCount: request.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(title: Text(request[index]));
+        },
+      );
+    }
   }
 }

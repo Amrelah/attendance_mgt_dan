@@ -13,14 +13,7 @@ class ResetPassword extends StatefulWidget {
 class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      AppbarHeight = MediaQuery.of(context).size.height * 0.2;
-    });
-    if (MediaQuery.of(context).orientation == Orientation.portrait) {
-      DanPadding = 20.0;
-    } else {
-      DanPadding = MediaQuery.of(context).size.width * 0.35;
-    }
+    Landscape(context);
     return SafeArea(
       child: Scaffold(
         appBar: EditedAppBar(
@@ -47,9 +40,11 @@ class _ResetPasswordState extends State<ResetPassword> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 25.0, vertical: 5.0),
                   child: DecoratedTextField(
-                      hint: 'Password Reset Reason',
-                      Ktype: TextInputType.text,
-                      secure: false),
+                    hint: 'Password Reset Reason',
+                    Ktype: TextInputType.text,
+                    secure: false,
+                    whenChange: () {},
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 130.0),
